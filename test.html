@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel= 'stylesheet' type= 'text/css' href="/css/grid.css">
+    <link rel= "stylesheet" type= "text/css" href="/css/styles.css">
+  
+    <title>Kanyen'keha Online</title>
+
+<style>
+
+#top {
+    display: flex;
+}
+
+#top:hover {
+    border: 10px solid red;
+}
+
+    .prefixes, #stem, #translation {
+        font-size: 40px;
+        font-family: waltz;
+    }
+
+    .prefixes {
+        width: 100px;
+        text-align: right;
+        
+    }
+
+    #stem {
+        width: 300px;
+    }
+
+.personButtons button, .num button, #singulars button, #duals button, #plurals button {
+    width: 150px;
+}
+
+.rootButtons button {
+    width: 200px;
+}
+.sing {
+    background-color: pink;
+
+}
+.dual {
+    background-color: rgb(235, 245, 143);
+
+}
+.plural {
+    background-color: rgb(158, 231, 140);
+
+}
+
+#singulars, #duals, #plurals {
+    display: none;
+}
+
+.verbGenerator {
+    width: 200px;
+    background-color: lightyellow;
+}
+
+.rootButtons {
+    padding: 50px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+    <div id="top">
+        <div class="prefixes" id="prefixes">
+            PREFIX
+        </div>
+
+        <input type="text" id="stem">
+        <!-- <div id="stem"></div> -->
+    </div> 
+
+
+
+<div class="buttonBox">
+
+<div class="num">
+            <button id="sing" onClick="showButtons('singulars')">Singular</button>
+            <button id="dual"onClick="showButtons('duals')">Dual</button>
+            <button id="plural"onClick="showButtons('plurals')">Plural</button>
+        </div>
+
+  
+            <div id="singulars">
+            <button class="sing" id="I" onClick="showPro('I')">I</button>
+            <button class="sing" id="you"onClick="showPro('you')">you</button>
+            <button class="sing" id="he">he</button>
+            <button class="sing" id="she">she</button>
+            <button class="sing" id="it">Fluffy</button>
+            </div>
+
+            <div id="duals">
+            <button class="dual" id="we2inc">you and I</button>
+            <button class="dual" id="we2exc">SO and I</button>
+            <button class="dual" id="youtwo">you two</button>
+            <button class="dual" id="2F">two Fs</button>
+            <button class="dual" id="2M">two MF</button>
+        </div>
+
+            <div id="plurals">
+            <button class="plural" id="we3inc">we 3+</button>
+            <button class="plural" id="we3exc">they & I</button>
+            <button class="plural" id="you3">you 3+</button>
+            <button class="plural" id="3M">3 MFs</button>
+            <button class="plural" id="3F">3 Fs</button>
+        </div>
+
+</div>
+
+<div class="rootButtons" id="rootButtons">
+</div>
+
+
+
+<script src="js/proBoard.js"></script>
+
+</body>
+</html>

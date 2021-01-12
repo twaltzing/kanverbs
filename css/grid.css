@@ -1,0 +1,104 @@
+.container {
+    display: grid;
+    grid-template-rows: repeat(10, auto);
+    grid-template-columns: repeat(10,auto);
+    }
+
+.Cone2two {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.Ctwo2three {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.Cthree2four {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.Cfour2five {
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+.Cfive2six {
+    grid-column-start: 5;
+    grid-column-end: 6;
+}
+.Csix2seven {
+    grid-column-start: 6;
+    grid-column-end: 7;
+}
+
+.Cseven2eight {
+    grid-column-start: 7;
+    grid-column-end: 8;
+}
+
+.Ceight2nine {
+    grid-column-start: 8;
+    grid-column-end: 9;
+}
+
+.Cnine2ten {
+    grid-column-start: 9;
+    grid-column-end: 10;
+}
+
+.Cone2three {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.Cthree2five {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.Cfive2seven {
+    grid-column-start: 5;
+    grid-column-end: 7;
+}
+
+.Cseven2nine {
+    grid-column-start: 7;
+    grid-column-end: 9;
+}
+
+.Cfive2eight {
+    grid-column-start: 5;
+    grid-column-end: 8;
+}
+
+.Cthree2ten {
+    grid-column-start: 3;
+    grid-column-end: 10;
+}
+
+.Cone2ten {
+    grid-column-start: 1;
+    grid-column-end: 10;
+}
+
+.Rone2five {
+    grid-row-start: 1;
+    grid-row-end: 5;  
+}
+
+.Rtwo2three {
+    grid-row-start: 2;
+    grid-row-end: 3;  
+}
+
+.Rthree2four {
+    grid-row-start: 3;
+    grid-row-end: 4;  
+}
+
+.Rfour2five {
+    grid-row-start: 4;
+    grid-row-end: 5;  
+}
+

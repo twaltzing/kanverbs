@@ -1,0 +1,80 @@
+.questions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sign {
+    border: 1px solid gray;
+}
+
+.sign:hover  {
+    border: 10px solid red;
+}
+
+.questionVocab {
+    background-color: green;
+}
+
+.logicVocab {
+    background-color: cornflowerblue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.trans {
+    font-size: 2em;
+    color: darkgray;
+    text-align: center;
+    padding: 10px;
+}
+
+.tl {
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    font-size: 2em;
+}
+
+.prefixBoard {
+    width: 150px;
+    height: 40px;
+    overflow-y: auto;
+    display: none;
+    font-size: 30px;
+    border: 1px solid red;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.prefixBoard:hover {
+    border: 5px solid green;
+}
+
+.visible {
+    display: block;
+}
+
+.whiteboard {
+    width: 800px;
+    height: 500px;
+    font-size: 3em;
+    overflow-y: auto;
+    border: 2px solid green;
+    margin-top: 20px;
+}
+
+.showPrefixes {
+    font-size: 40px;
+}
+
+.singulars, .duals, .plurals {
+    display: none;
+}
