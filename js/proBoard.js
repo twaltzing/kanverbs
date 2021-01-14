@@ -290,8 +290,25 @@ function showPersonButtons(stem){
 
 
 function isConsonant(obj){
-            if (["h","n","s","t","k","'"].includes(obj)) {
+            if (["h","n","s","t","k","'", "′"].includes(obj)) {
                 stemLetter="c";
+
+            if (["á", "à"].includes(obj)) {
+                    stemLetter="a";
+                }
+
             }
+            if (["í", "ì"].includes(obj)) {
+                stemLetter="i";
+            }
+
+            if (["é", "è"].includes(obj)) {
+                stemLetter="e";
+            }
+
+            if (["ó", "ò"].includes(obj)) {
+                stemLetter="o";
+            }
+
         }
 
