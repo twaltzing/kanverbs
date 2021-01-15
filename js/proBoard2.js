@@ -26,6 +26,12 @@ var verbRoots = [
     {"english":"try hard",
     "mohawk":"ahkwíhsron",
     "color":"red"},
+    {"english":"driving",
+    "mohawk":"ató:ris",
+    "color":"red"},
+    {"english":"working",
+    "mohawk":"yó′ten\'s",
+    "color":"blue"},
     {"english":"listening",
     "mohawk":"atahónhsatats",
     "color":"red"},
@@ -38,9 +44,6 @@ var verbRoots = [
     {"english":"drawing",
     "mohawk":"ráhstha",
     "color": "red"},
-    {"english":"driving",
-    "mohawk":"atóris",
-    "color":"red"},
     {"english":"have a pet",
     "mohawk":"náhskwayen",
     "color":"blue"},
@@ -94,7 +97,7 @@ var pronounTest = [
             we2exc: "yaky",
             youtwo: "tsy",
             MF2: "(h)y",
-            F2: "kya",
+            F2: "ky",
             we3inc: "tew",
             we3exc: "yakw",
             you3: "sew",
@@ -295,7 +298,7 @@ var stem="";
 var stemColor="";
 
 verbRoots.forEach((verb)=>{
-    buttonStuff += `<button class="verbGenerator" data-mohawk=${verb.mohawk} data-color=${verb.color}>${verb.english}</button>`;
+    buttonStuff += `<button class="verbGenerator" data-mohawk=${verb.mohawk} data-color=${verb.color}span style='color: ${verb.color}'>${verb.english}</span></button>`;
     
 });
 
@@ -360,6 +363,7 @@ function showPro(person) {
         if (verbRoots[r].mohawk===stem){
             console.log("****THIS ONE!****");
             stemColor=verbRoots[r].color;
+            meaning=verbRoots[r].english;
             
         }
     }
@@ -367,9 +371,9 @@ function showPro(person) {
 
     //match corresponding pronoun by person
     for (i=0; i<pronounTest.length; i++){
-        console.log("StemLetter of data is "+pronounTest[i].stemLetter); 
+       /*  console.log("StemLetter of data is "+pronounTest[i].stemLetter); 
         console.log("StemColor of data is "+pronounTest[i].stemColor);
-        console.log("We seek "+ stemLetter ,stemColor);
+        console.log("We seek "+ stemLetter ,stemColor); */
     if (pronounTest[i].stemLetter === stemLetter && pronounTest[i].stemColor === stemColor)
     {
         console.log("Found letter and color");
@@ -379,36 +383,25 @@ function showPro(person) {
         var item;
         if( pickList.hasOwnProperty(person) ) {
             item = pickList[person];
-            console.log("You are looking for "+ item );
+          
+            /* console.log("You are looking for "+ item ); */
             colorInfoStart= "<span style='color:"+ stemColor +"'>"
             colorInfoEnd= "</span>";
         
             x.innerHTML= colorInfoStart + item + colorInfoEnd ;
 
-            
+  
         }
 
-
-
-}
-    
+} 
         }
-
     }
 
-
-/* function showPersonButtons(stem){
-    // display buttons
-    console.log("Okay");
-    var personButtons = document.getElementById("pButtons");
-    personButtons.innerHTML="<button class='pButton' onClick='displayPronouns('ItoIt')'>I to it</button>"; 
-    // more buttons here for all persons
-    } */
 
 
 
 function isConsonant(obj){
-            if (["h","n","s","t","k","'", "′", "r"].includes(obj)) {
+            if (["h","y","n","s","t","k","'", "′", "r"].includes(obj)) {
                 stemLetter="c";
 
             if (["á", "à"].includes(obj)) {
