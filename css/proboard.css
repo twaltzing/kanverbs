@@ -7,30 +7,36 @@
 #top:hover {
     border: 10px solid red;
 }
-.prefixes, #stem, #translation {
-        font-size: 40px;
+.prefixes, #stem, #altStem, #translation {
+        font-size: 60px;
         font-family: waltz;
              margin-bottom: 5px;
     }
+
+#altStem {
+    display: none;
+}
 .prefixes {
         width: 250px;
         text-align: right;
         margin-right: 3px; 
     }
 
-    #stem {
+    #stem, #altStem {
         width: 600px;
         border-width:0px;
         border:none;
     }
 
 .personButtons button, .num button, #singulars button, #duals button, #plurals button {
-    width: auto;
+    width: 165px;
     height: auto;
-    border-radius: 50%;
+
     padding-left: 20px;
     padding-right: 20px;
 }
+
+
 
 .rootButtons button {
     width: auto;
@@ -39,15 +45,15 @@
     background-color: pink;
 }
 .dual {
-    background-color: rgb(235, 245, 143);
+    background-color: rgb(237, 168, 216);
 }
 .plural {
-    background-color: rgb(158, 231, 140);
+    background-color: rgb(240, 139, 198);
 }
 
-#singulars, #duals, #plurals {
+/* #singulars, #duals, #plurals {
     display: none;
-}
+} */
 
 .verbGenerator {
     width: 200px;

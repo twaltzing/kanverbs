@@ -78,3 +78,7 @@ button {
 .singulars, .duals, .plurals {
     display: none;
 }
+
+.buttonBox {
+    justify-content: center;
+}

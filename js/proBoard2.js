@@ -1,7 +1,45 @@
 var verbRoots = [
+    {"english":"A",
+    "mohawk":"a",
+    "color":"red"},
+    {"english":"E",
+    "mohawk":"e",
+    "color":"red"},
+    {"english":"I",
+    "mohawk":"i",
+    "color":"red"},
+    {"english":"O",
+    "mohawk":"o",
+    "color":"red"},
+    {"english":"C",
+    "mohawk":"c",
+    "color":"red"},
+
+    {"english":"A",
+    "mohawk":"a",
+    "color":"blue"},
+    {"english":"E",
+    "mohawk":"e",
+    "color":"blue"},
+    {"english":"I",
+    "mohawk":"i",
+    "color":"blue"},
+    {"english":"O",
+    "mohawk":"o",
+    "color":"blue"},
+    {"english":"C",
+    "mohawk":"c",
+    "color":"blue"},
+
     {"english":"likes",
     "mohawk":"nònwe\'s",
     "color":"red"},
+    {"english":"knows s.t.",
+    "mohawk":"ateryén:tare",
+    "color":"blue"},
+    {"english":"healthy",
+    "mohawk":"ata'karí:te",
+    "color":"blue"},
     {"english":"remembers",
     "mohawk":"ehyá:ra\'s",
     "color":"red"},
@@ -9,7 +47,7 @@ var verbRoots = [
     "mohawk": "é:sak\'s",
     "color":"red"},
     {"english":"stays at",
-    "mohawk": "í:teron",
+    "mohawk": "ì:teron",
     "color":"red"},
     {"english":"sews",
     "mohawk":"′níkhons",
@@ -17,19 +55,22 @@ var verbRoots = [
     {"english":"understands",
     "mohawk": "′nikonhrayén:ta\'s",
     "color":"blue"},
-    {"english":"being sick",
+    {"english":"sick",
     "mohawk": "nonhwáktani",
     "color":"blue"},
     {"english": "resting",
     "mohawk": "atoríhsen",
     "color":"blue"},
-    {"english":"try hard",
+    {"english":"trying hard",
     "mohawk":"ahkwíhsron",
     "color":"red"},
     {"english":"driving",
     "mohawk":"ató:ris",
     "color":"red"},
-    {"english":"working",
+    {"english":"happy",
+    "mohawk":"atshennòn:ni",
+    "color":"blue"},
+    /* {"english":"working",
     "mohawk":"yó′ten\'s",
     "color":"blue"},
     {"english":"listening",
@@ -52,10 +93,26 @@ var verbRoots = [
     "color":"blue"},
     {"english":"buying a car",
     "mohawk":"′serehtsherahnínons",
-    "color":"red"},
-    {"english":"studies",
+    "color":"red"}, */
+    {"english":"studying",
     "mohawk":"ateweyénstha",
-    "color":"red"}
+    "color":"red"},
+    {"english":"angry",
+    "mohawk":"na'kwén\'on",
+    "color":"blue"},
+    {"english":"sad",
+    "mohawk":"′nikonhráksen",
+    "color":"blue"},
+    {"english":"awake",
+    "mohawk":"yé:'on",
+    "color":"blue"},
+    {"english":"enjoying",
+    "mohawk":"on'wéhskwani",
+    "color":"blue"},
+    {"english":"sleeping",
+    "mohawk": "ítahs",
+    "color": "blue"}
+
 
 
 ]
@@ -222,8 +279,8 @@ var pronounTest = [
                         I: "wak",
                         you: "s",
                         he: "ro",
-                        she: "yak",
-                        it: "y",
+                        she: "yako",
+                        it: "yo",
                         we2inc: "yonky",
                         we2exc: "yonky",
                         youtwo: "tsy",
@@ -282,13 +339,22 @@ var pronounTest = [
 
 ]
 
-for (i=0; i<pronounTest.length; i++){
+/* for (i=0; i<pronounTest.length; i++){
     console.log(pronounTest[i].stemLetter);
 if (pronounTest[i].color==="blue" && pronounTest[i].stemLetter==="c")
 {
 console.log(pronounTest[i].pronouns.I);
-}}
+}} */
 
+
+const verbRootsList=[];
+function extractRoots(){
+    for (i=0; i<verbRoots.length; i++){
+    verbRootsList.push(verbRoots[i].english);
+    }
+    verbRootsList.sort();
+    return verbRootsList;
+}
 
 
 
@@ -296,11 +362,30 @@ var buttonStuff="";
 var stemType = ""; 
 var stem="";
 var stemColor="";
+var list = extractRoots(verbRoots);
+list.sort;
+/* remove duplicate letters to produce plain-root buttons at top */
 
-verbRoots.forEach((verb)=>{
-    buttonStuff += `<button class="verbGenerator" data-mohawk=${verb.mohawk} data-color=${verb.color}span style='color: ${verb.color}'>${verb.english}</span></button>`;
+list.splice(0,10);
+var letters=["c","a","e","i","o"];
+list=[...letters, ...list];
+list.toLowerCase;
+
+
+/* for each English word in the sorted list, produce the corresponding button */
+list.forEach((englishWord)=>{
+    verbRoots.forEach((verb)=>{
+        console.log( verb.english.toLowerCase() , englishWord);
+            if (englishWord === verb.english.toLowerCase()){ 
+                /* console.log(verb.english +":" + englishWord); */
+                buttonStuff += `<button class="verbGenerator" data-mohawk=${verb.mohawk} data-color=${verb.color}span style='color: ${verb.color}'>${verb.english}</span></button>`;
+            }
+            })
+
+
     
-});
+        }) ;
+
 
 
 
@@ -311,8 +396,12 @@ verbRoots.forEach((verb)=>{
     // using eventlistener here for verbGenerator buttons
     rootButtons.addEventListener('click',function(e){
         if(e.target.classList.contains('verbGenerator')){
+
+            var firstRoot = e.target.getAttribute('data-mohawk');
+
             fillRoot(e.target.getAttribute('data-mohawk'));
             document.getElementById("prefixes").innerHTML="";
+
         }
     })  
 
@@ -323,6 +412,7 @@ function fillRoot(verb){
     var s = document.getElementById("stem");
     console.log(s);
     s.value = verb;
+
     }
 
 
@@ -340,8 +430,13 @@ function showButtons(group){
 
 
 function showPro(person) {
-   //clear pronoun display box
+
+   document.getElementById("stem").style.display="block";
+    document.getElementById("altStem").style.display="none";
+
+        //clear pronoun display box
     var x = document.getElementById("prefixes");
+
     x.innerHTML="";
     //get root type
     stemLetter=document.getElementById("stem").value[0];
@@ -361,7 +456,6 @@ function showPro(person) {
         /* console.log("Root "+r+" is "+verbRoots[r].mohawk); */
         //find the stem color
         if (verbRoots[r].mohawk===stem){
-            console.log("****THIS ONE!****");
             stemColor=verbRoots[r].color;
             meaning=verbRoots[r].english;
             
@@ -371,9 +465,7 @@ function showPro(person) {
 
     //match corresponding pronoun by person
     for (i=0; i<pronounTest.length; i++){
-       /*  console.log("StemLetter of data is "+pronounTest[i].stemLetter); 
-        console.log("StemColor of data is "+pronounTest[i].stemColor);
-        console.log("We seek "+ stemLetter ,stemColor); */
+
     if (pronounTest[i].stemLetter === stemLetter && pronounTest[i].stemColor === stemColor)
     {
         console.log("Found letter and color");
@@ -383,11 +475,43 @@ function showPro(person) {
         var item;
         if( pickList.hasOwnProperty(person) ) {
             item = pickList[person];
+
+/*Sound exception where o kills a */
+
+
+
+if(item==="ro" && (stemLetter==="a" || stemLetter==="i"))  {
+    killFirstLetter(stem); 
+} 
+if (item==="yako" && (stemLetter==="a"|| stemLetter==="i")){
+    killFirstLetter(stem);
+}
+if (item==="yo" && (stemLetter==="a"|| stemLetter==="i")){
+    killFirstLetter(stem);
+}
+
+/* ends in -wen before i kills the i */
+let ending = item.substr(-2);
+console.log (ending);
+if (ending==="en" && stem[0]==="i"){
+    killFirstLetter(stem);
+}
+if (item.substr(-3)==="ren" && stem[0]==="ì"){
+    killFirstLetter(stem);
+    item = "rèn";
+}
+
+if (item.substr(-2)==="ye" && stem[0]==="ì"){
+    killFirstLetter(stem);
+    item = "yè";
+}
+
+/* Call fillRoot to replace box, but how do you know what root to fill?? */
           
             /* console.log("You are looking for "+ item ); */
             colorInfoStart= "<span style='color:"+ stemColor +"'>"
             colorInfoEnd= "</span>";
-        
+        /* insert the pronoun into the box */
             x.innerHTML= colorInfoStart + item + colorInfoEnd ;
 
   
@@ -401,7 +525,7 @@ function showPro(person) {
 
 
 function isConsonant(obj){
-            if (["h","y","n","s","t","k","'", "′", "r"].includes(obj)) {
+            if (["h","n","s","t","k","'", "′", "r", "y"].includes(obj)) {
                 stemLetter="c";
 
             if (["á", "à"].includes(obj)) {
@@ -423,3 +547,12 @@ function isConsonant(obj){
 
         }
 
+function killFirstLetter(stem){
+    stemExc = stem.slice(1);
+    console.log("new stem is "+stemExc);
+    /* make a new div for this */
+    document.getElementById("altStem").value=stemExc;
+    document.getElementById("altStem").style.display="block";
+    document.getElementById("stem").style.display="none";
+
+}
